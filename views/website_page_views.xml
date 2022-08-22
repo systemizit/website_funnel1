@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="website_pages_form_view_inherit_website_funnel" model="ir.ui.view">
+        <field name="name">website.pages.form.view.inherit.website.funnel</field>
+        <field name="model">website.page</field>
+        <field name="inherit_id" ref="website.website_pages_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <group>
+                    <group>
+                        <field name="is_funnel"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="website_pages_view_search_inherit_website_funnel" model="ir.ui.view">
+        <field name="name">website.page.view.search.inherit.website.funnel</field>
+        <field name="model">website.page</field>
+        <field name="inherit_id" ref="website.website_pages_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='not_tracked']" position="after">
+                <separator/>
+                <filter string="Funnels" name="funnels" domain="[('is_funnel', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <template id="website_funnel.list_website_pages" inherit_id="website.list_website_pages">
+        <xpath expr="//div[@class='table-responsive']/table/thead/tr/th[6]" position="after">
+            <th class="text-center"><i title="Is the page a funnel?" class="fa fa-filter"></i></th>
+        </xpath>
+    </template>
+
+    <template id="website_funnel.one_page_line" inherit_id="website.one_page_line">
+        <xpath expr="//tr[1]/td[6]" position="after">
+            <td class="text-center">
+                <i t-if="page.is_funnel" class="fa fa-check" title="Funnel Page"/>
+                <i t-else="" class="fa fa-times text-muted" title="Not a Funnel Page"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

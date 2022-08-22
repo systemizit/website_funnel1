@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="s_funnel_buttons" name="Funnel Buttons">
+        <section class="s_text_block pt40 pb40">
+            <div class="container s_allow_columns text-center">
+                <form action="/shop/cart/accept_offer" method="POST" class="funnel_buttons">
+                    <button type="submit" role="button" id="add_to_cart"
+                            class="btn btn-primary btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
+                            href="#"><i class="fa fa-shopping-cart mr-2"/>Add to Cart
+                    </button>
+                    <button type="submit" role="button" id="reject_offer"
+                            class="btn btn-secondary btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
+                            href="#">No Thanks
+                    </button>
+                </form>
+            </div>
+        </section>
+    </template>
+
+</odoo>
